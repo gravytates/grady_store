@@ -1,6 +1,18 @@
 Rails.application.routes.draw do
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
   root to: "home#index"
+
+  resources :products do
+    resources :order_items
+  end
+
+  resources :order_items
+
+  resources :accounts
+
+  resources :orders do
+    resources :order_items
+  end
+
+  # resource :cart, only: [:show]
 end
